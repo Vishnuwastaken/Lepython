@@ -1,7 +1,7 @@
 from tkinter import *
 from User_Model import User
 # from WINDOW import MainWindow
-from Option_After_login import *
+from Post_Login import *
 
 # this has functions used throughout login and signup
 class Authentication:
@@ -83,10 +83,10 @@ class Login:
         self.frame.title("Welcome! Please Login.")
         self.frame.geometry("500x500")
         self.users = []
-        self.frame.configure(bg="blue")
+        self.frame.configure(bg="teal")
 
         # gives welcome msg
-        self.lbl_welcome = Label(self.frame, text="~*~  Welcome to Vishnu's app ~*~", bg="green", fg="black", font=("arial","20"))
+        self.lbl_welcome = Label(self.frame, text="~*~  Welcome to Vishnu's app ~*~", bg="green", fg="black", font=("arial","20"), relief='raised')
         self.lbl_welcome.pack()
 
         # gives instructions
@@ -94,7 +94,7 @@ class Login:
         self.lbl_info.pack(pady=20)
 
         # displays label and tells them to enter username
-        self.lbl_username = Label(self.frame, text="Enter your username: ", bg="orange", fg="black")
+        self.lbl_username = Label(self.frame, text="Enter your username: ", bg="orange", fg="black", relief='raised')
         self.lbl_username.pack(pady=5)
 
         # textbox where the user enters their username
@@ -102,7 +102,7 @@ class Login:
         self.txt_username.pack()
 
         # displays label and tells them to enter password
-        self.lbl_password = Label(self.frame, text="Enter your password: ", bg="orange", fg="black")
+        self.lbl_password = Label(self.frame, text="Enter your password: ", bg="orange", fg="black", relief='raised')
         self.lbl_password.pack(pady=5)
 
         # textbox where the user enters their username
@@ -110,19 +110,19 @@ class Login:
         self.txt_password.pack()
 
         # after they enter all details, they press login
-        self.btn_login = Button(self.frame, text="Login", command=self.login_wrapper)
+        self.btn_login = Button(self.frame, text="Login", command=self.login_wrapper, fg="green")
         self.btn_login.pack(pady=20)
 
         # There is a signup button if they dont have an account.
-        self.btn_signup = Button(self.frame, text="Sign up", command=self.signup)
+        self.btn_signup = Button(self.frame, text="Sign up", command=self.signup, fg="purple")
         self.btn_signup.pack(pady=20)
 
         # just tells them to input their details above
-        self.lbl_status = Label(self.frame, text="Login above.")
+        self.lbl_status = Label(self.frame, text="Login above.", fg="magenta")
         self.lbl_status.pack(pady=10)
 
         # if they want to exit, they press this button
-        self.btn_exit = Button(self.frame, text="Exit", command=self.exit_handle)
+        self.btn_exit = Button(self.frame, text="Exit", command=self.exit_handle, fg="crimson")
         self.btn_exit.pack(pady=20)
 
     # this function calls the method login_handle from "Authentication"
@@ -133,7 +133,7 @@ class Login:
             self.lbl_status.config(text="Username does not exist", fg="red")
         elif status == 2:
             self.lbl_status.config(text=f"Welcome, {self.txt_username.get().title()}", fg="green")
-            from OOP_Projects.Option_After_login import Mainmenu
+            from OOP_Projects.Post_Login import Mainmenu
             Mainmenu(self.root, self.txt_username.get())
             self.frame.destroy()
         else:
@@ -157,14 +157,14 @@ class Signup:
         self.currentWindow = Toplevel()
         self.currentWindow.title("Sign up Window")
         self.currentWindow.geometry("700x500")
-        self.currentWindow.configure(bg="blue")
+        self.currentWindow.configure(bg="lightseagreen")
 
         # gives them instructions
-        self.lbl_instruct = Label(self.currentWindow, text="Please enter a username, password, and repeat the password again", font=("arial",20), fg="gold")
+        self.lbl_instruct = Label(self.currentWindow, text="Please enter a username, password, and repeat the password again", font=("arial", 20), fg="gold", relief='raised')
         self.lbl_instruct.pack()
 
         # label that tells them to enter a username
-        self.lbl_username1 = Label(self.currentWindow, text="Enter a username", fg="black", bg="orange")
+        self.lbl_username1 = Label(self.currentWindow, text="Enter a username", fg="black", bg="orange", relief='raised')
         self.lbl_username1.pack(pady=5)
 
         # textbox where they enter username
@@ -172,7 +172,7 @@ class Signup:
         self.txt_username1.pack()
 
         # label that tells them to enter password
-        self.lbl_password1 = Label(self.currentWindow, text="Enter a password", fg="black", bg="orange")
+        self.lbl_password1 = Label(self.currentWindow, text="Enter a password", fg="black", bg="orange", relief='raised')
         self.lbl_password1.pack(pady=5)
 
         # textbox where they enter password
@@ -180,7 +180,7 @@ class Signup:
         self.txt_password1.pack()
 
         # label that tells them to re-enter password
-        self.lbl_confirmpass = Label(self.currentWindow, text="Retype the password", fg="black", bg="orange")
+        self.lbl_confirmpass = Label(self.currentWindow, text="Retype the password", fg="black", bg="orange", relief='raised')
         self.lbl_confirmpass.pack(pady=5)
 
         # textbox where they re-enter password
@@ -188,15 +188,15 @@ class Signup:
         self.txt_confirmpass.pack()
 
         # Submits their details
-        self.btn_submit = Button(self.currentWindow, text="Sign Up", command=self.signup_wrapper)
+        self.btn_submit = Button(self.currentWindow, text="Sign Up", command=self.signup_wrapper, fg="darkgreen")
         self.btn_submit.pack(pady=20)
 
         # gives them an instruction on where to sign up
-        self.lbl_status = Label(self.currentWindow, text="Sign Up above.")
+        self.lbl_status = Label(self.currentWindow, text="Sign Up above.", fg="lime")
         self.lbl_status.pack(pady=10)
 
         # if they want to exit, they press this button
-        self.btn_exit = Button(self.currentWindow, text="Exit", command=self.exit_handle)
+        self.btn_exit = Button(self.currentWindow, text="Exit", command=self.exit_handle, fg="crimson")
         self.btn_exit.pack(pady=20)
 
     # they can quit the app
@@ -228,7 +228,9 @@ class Signup:
 # this code allows the file to be used as a module (importable)
 if __name__ == "__main__":
     root = Tk()
+    root.title("Begin the app!")
     root.geometry("500x300")
+    root.configure(bg="saddlebrown")
     def go():
         Login(root)
     def close():
@@ -238,10 +240,10 @@ if __name__ == "__main__":
     img_lbl = Label(root, image=photo)
     img_lbl.pack()
 
-    btn_start = Button(root, text="COMMENCE THE APP", command=go)
+    btn_start = Button(root, text="COMMENCE THE APP", command=go, fg="lawngreen")
     btn_start.pack(pady=10)
 
-    btn_leave = Button(root, text="EXIT", command=close)
+    btn_leave = Button(root, text="EXIT", command=close, fg="orangered")
     btn_leave.pack(pady=10)
 
     root.mainloop()
